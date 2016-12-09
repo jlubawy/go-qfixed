@@ -19,6 +19,10 @@ func TestEncode(t *testing.T) {
 	assert(Q9_4, +000.0000, 0x0000)
 	assert(Q9_4, -256.0000, 0x1000)
 	assert(Q9_4, +255.9375, 0x0FFF)
+	assert(Q9_4, -000.0625, 0x1FFF)
+	assert(Q9_4, +002.0000, 0x0020)
+	assert(Q9_4, +123.0625, 0x07B1)
+	assert(Q9_4, -122.9375, 0x1851)
 
 	// Q14.0
 	assert(Q14_0, +0000.0, 0x0000)
@@ -34,6 +38,11 @@ func TestEncode(t *testing.T) {
 	assert(Q12_3, +0000.000, 0x0000)
 	assert(Q12_3, -2048.000, 0x4000)
 	assert(Q12_3, +2047.875, 0x3FFF)
+
+	// Q15.1
+	assert(Q15_1, +00000.0, 0x0000)
+	assert(Q15_1, -16384.0, 0x8000)
+	assert(Q15_1, +16383.5, 0x7FFF)
 }
 
 func TestDecode(t *testing.T) {
@@ -49,6 +58,10 @@ func TestDecode(t *testing.T) {
 	assert(Q9_4, 0x0000, +000.0000)
 	assert(Q9_4, 0x1000, -256.0000)
 	assert(Q9_4, 0x0FFF, +255.9375)
+	assert(Q9_4, 0x1FFF, -000.0625)
+	assert(Q9_4, 0x0020, +002.0000)
+	assert(Q9_4, 0x07B1, +123.0625)
+	assert(Q9_4, 0x1851, -122.9375)
 
 	// Q14.0
 	assert(Q14_0, 0x0000, +0000.0)
@@ -64,6 +77,11 @@ func TestDecode(t *testing.T) {
 	assert(Q12_3, 0x0000, +0000.000)
 	assert(Q12_3, 0x4000, -2048.000)
 	assert(Q12_3, 0x3FFF, +2047.875)
+
+	// Q15.1
+	assert(Q15_1, 0x0000, +00000.0)
+	assert(Q15_1, 0x8000, -16384.0)
+	assert(Q15_1, 0x7FFF, +16383.5)
 }
 
 func absDiff(a, b float64) float64 {
