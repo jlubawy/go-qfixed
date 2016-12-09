@@ -25,7 +25,10 @@ func NewFormat(m, n uint) *Format {
 	}
 }
 
+var Q9_4 = NewFormat(9, 4)
 var Q8_4 = NewFormat(8, 4)
+var Q14_0 = NewFormat(14, 0)
+var Q12_3 = NewFormat(12, 3)
 
 func (f *Format) String() string {
 	return fmt.Sprintf("Q%d.%d", f.m, f.n)
